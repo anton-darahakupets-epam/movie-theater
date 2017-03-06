@@ -1,0 +1,11 @@
+.idea
+target
+.settings
+.classpath
+.project
+.vlt
+.checkstyle
+.pmd
+.pmdruleset.xml
+*.iml
+IntelliVault/

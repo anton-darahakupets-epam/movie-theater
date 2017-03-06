@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/util
+       					   http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+			
+	<bean id="birthDayStrategy" class="com.epam.movietheater.service.impl.discountstraegy.BirthdayStrategy"/>
+	
+	<bean id="everyTenStrategy" class="com.epam.movietheater.service.impl.discountstraegy.EveryTenTicketStrategy"/>
+	
+	<util:list id="discountStrategies">
+        <ref bean="birthDayStrategy"/>
+        <ref bean="everyTenStrategy"/>
+    </util:list>
+	
+	<bean id="discountStrategy" class="com.epam.movietheater.service.impl.DiscountStrategy">
+		<property name="listDiscountStrategies" ref="discountStrategies"/>
+	</bean>		   							   						     
+
+</beans>

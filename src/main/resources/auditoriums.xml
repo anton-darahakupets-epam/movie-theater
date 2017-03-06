@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+	
+	<bean id="red" class="com.epam.movietheater.domain.Auditorium">
+		<constructor-arg value="${red.name}"/>
+		<constructor-arg value="${red.numberOfSeats}"/>
+		<constructor-arg value="${red.vipSeats}"/>
+    </bean>
+    <bean id="green" class="com.epam.movietheater.domain.Auditorium">
+		<constructor-arg value="${green.name}"/>
+		<constructor-arg value="${green.numberOfSeats}"/>
+		<constructor-arg value="${green.vipSeats}"/>
+    </bean>
+    <bean id="black" class="com.epam.movietheater.domain.Auditorium">
+		<constructor-arg value="${black.name}"/>
+		<constructor-arg value="${black.numberOfSeats}"/>
+		<constructor-arg value="${black.vipSeats}"/>
+    </bean>
+     <bean id="white" class="com.epam.movietheater.domain.Auditorium">
+		<constructor-arg value="${white.name}"/>
+		<constructor-arg value="${white.numberOfSeats}"/>
+		<constructor-arg value="${white.vipSeats}"/>
+    </bean>
+
+    <util:list id="auditoriumList">
+        <ref bean="red"/>
+        <ref bean="green"/>
+        <ref bean="white"/>
+        <ref bean="black"/>
+    </util:list>
+    
+   
+    
+</beans>

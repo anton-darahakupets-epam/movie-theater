@@ -1,0 +1,61 @@
+CREATE TABLE users
+  (
+    user_id NUMBER (20) NOT NULL ,
+    first_name VARCHAR(255),
+    email VARCHAR(255),
+    birthDay DATE,
+    last_name VARCHAR(255)
+  ) ;
+ALTER TABLE users ADD CONSTRAINT user_PK PRIMARY KEY (user_id) ;
+CREATE SEQUENCE users_user_id_seq START WITH 1 NOCACHE ORDER ;
+
+CREATE TABLE events (
+    	event_id NUMBER (20) NOT NULL , 
+	name VARCHAR(255),    
+	base_price NUMBER (20) NOT NULL , 
+    	raiting VARCHAR(255) NOT NULL
+);
+CREATE SEQUENCE events_event_id_seq START WITH 1 NOCACHE ORDER ;
+ALTER TABLE events ADD CONSTRAINT event_PK PRIMARY KEY (event_id) ;
+
+CREATE TABLE tickets (
+	ticket_id  NUMBER (20) NOT NULL,
+	air_date TIMESTAMP,
+	seat  NUMBER (10) NOT NULL
+);
+
+ALTER TABLE tickets ADD CONSTRAINT ticket_PK PRIMARY KEY (ticket_id) ; 
+CREATE SEQUENCE tickets_ticket_id_seq START WITH 1 NOCACHE ORDER ;
+
+CREATE TABLE events_tickets (
+	ticket_id  NUMBER (20) NOT NULL,
+	event_id NUMBER (20) NOT NULL
+);
+
+ALTER TABLE events_tickets ADD CONSTRAINT events_tickets_Fi_tickets FOREIGN KEY (ticket_id)  REFERENCES tickets (ticket_id);
+ALTER TABLE events_tickets ADD CONSTRAINT events_tickets_Fi_events FOREIGN KEY (event_id) REFERENCES events (event_id);
+
+CREATE TABLE users_tickets (
+	user_id NUMBER (20) NOT NULL ,
+	ticket_id  NUMBER (20) NOT NULL,
+);
+
+ALTER TABLE users_tickets ADD CONSTRAINT users_tickets _Fi_events FOREIGN KEY (event_id) REFERENCES events(event_id);
+ALTER TABLE users_tickets ADD CONSTRAINT users_tickets _Fi_users FOREIGN KEY (user_id) REFERENCES users (user_id);
+
+CREATE TABLE air_dates (
+	air_date_id NUMBER (20) NOT NULL,
+	air_date TIMESTAMP
+) ;
+ALTER TABLE air_dates ADD CONSTRAINT air_date_PK PRIMARY KEY (air_date_id) ; 
+CREATE SEQUENCE air_dates_air_date_id_seq START WITH 1 NOCACHE ORDER ;
+
+CREATE TABLE events_air_dates (
+	event_id NUMBER (20) NOT NULL ,
+	air_date_id NUMBER (20) NOT NULL
+); 
+ALTER TABLE events_air_dates ADD CONSTRAINT events_air_dates_Fi_events FOREIGN KEY (event_id) REFERENCES events(event_id); 
+ALTER TABLE events_air_dates ADD CONSTRAINT events_air_dates_Fi_air_dates FOREIGN KEY (air_date_id) REFERENCES air_dates(air_date_id);
+
+
+

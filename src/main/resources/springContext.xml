@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- <import resource="classpath:auditoriums.xml" /> <import resource="classpath:daoContext.xml" 
+		/> <import resource="classpath:serviceContext.xml" /> <import resource="classpath:discountContext.xml" 
+		/> <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> 
+		<constructor-arg ref="dataSource" /> </bean> <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		destroy-method="close"> <constructor-arg ref="dataSource" /> <property name="driverClassName" 
+		value="${jdbc.driverClassName}" /> <property name="url" value="${jdbc.url}" 
+		/> <property name="username" value="${jdbc.username}" /> <property name="password" 
+		value="${jdbc.password}" /> </bean> -->
+	<context:annotation-config />
+	<bean class="quoters.CustomLogicForBeanFactorypostProccesor" />
+	<bean class="quoters.TerminatorQuoter" scope="prototype" />
+	<bean class="quoters.InjectRandomIntBeanPostProcessor" />
+</beans>
